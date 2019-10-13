@@ -1,6 +1,8 @@
 package com.unitedremote.codingchallenge;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +11,7 @@ import android.widget.Toast;
 import com.unitedremote.codingchallenge.interfaces.RetrofitClient;
 import com.unitedremote.codingchallenge.model.Repositories;
 import com.unitedremote.codingchallenge.model.Repository;
+import com.unitedremote.codingchallenge.view.RepositoryListAdapter;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,12 +27,18 @@ public class MainActivity extends AppCompatActivity {
 
     private static String TAG = "RepResponse";
     private Repositories repositoriesList;
+    private RecyclerView recyclerView ;
+    public RepositoryListAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        recyclerView = findViewById(R.id.list_repositories);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -53,7 +62,11 @@ public class MainActivity extends AppCompatActivity {
                     repositoriesList = response.body();
                     List<Repository> repositories = repositoriesList.getItems();
 //                    prepareData(repositoriesList);
-                    Log.i(TAG, repositories.get(0).getmName());
+//                    Log.i(TAG, repositories.get(0).getmDescription());
+
+                    adapter = new RepositoryListAdapter(repositoriesList.getItems(), getApplicationContext());
+                    recyclerView.setAdapter(adapter);
+
                 } else {
 
 

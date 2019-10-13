@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="10dp"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22dp"
+        android:textColor="#000"
+        android:text="Rep Name"
+        android:id="@+id/single_rep_title"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:id="@+id/single_rep_desc"
+        android:text="desc"
+        android:textColor="#000"
+        android:textSize="18dp"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        >
+
+        <ImageView
+            android:id="@+id/single_rep_user_avatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_image_black_24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/single_rep_user_name"
+            android:text="User name"
+            android:layout_toRightOf="@+id/single_rep_user_avatar"
+            android:layout_alignBottom="@+id/single_rep_user_avatar"
+            android:layout_marginLeft="5dp"
+            android:textSize="18dp"
+            android:textColor="#000"/>
+
+        <TextView
+            android:id="@+id/single_rep_stars_nbrs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" starts nbr"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:drawableLeft="@drawable/ic_star_black_24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignBottom="@+id/single_rep_user_avatar"
+
+            />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
